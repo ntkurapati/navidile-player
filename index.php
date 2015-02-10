@@ -12,10 +12,10 @@ if ($mysqli->connect_errno) {
 }
 $lec_id=$_GET['id'];
 
-$statement = $mysqli->prepare("SELECT `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`, `next_id`, `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `idno` = ?");
+$statement = $mysqli->prepare("SELECT `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `idno` = ?");
 $statement->bind_param('s', $lec_id);
 $statement->execute();
-$statement->bind_result($mpurl, $course_title, $title, $rec_date, $mediasite_url, $next_id, $slide_base_url, $image_refs, $class_year);
+$statement->bind_result($mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
 while($statement->fetch()){}
 $statement->free_result();
 
