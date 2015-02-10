@@ -27,6 +27,7 @@ $statement2->execute();
 $statement2->bind_result($temp_idno);
 
 $last_id="";
+$next_id="";
 while($statement2->fetch()){
 	if($temp_idno == $lec_id) {
 		$prev_id=$last_id;
