@@ -36,12 +36,9 @@ if($statement){
                         $subpiece=str_replace($subpiece, $regalert, '');
                     }
                 }
-
-
-
             }
             $newsubs = implode(',', $subpieces);
-            echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs)
+            echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
             $statement2 = $mysqli->prepare("UPDATE subscribers SET `subscriptions` = ? WHERE `password` = ?");
             $statement2->execute(array($newsubs, $pw));
         }
