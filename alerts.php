@@ -45,7 +45,7 @@ if($statement){
                     $subpiece .=$reqalert;
                 }
             }
-            $newsubs .= ','. $subpiece;
+            $newsubs .=  $subpiece ',';
         }
 
         echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
