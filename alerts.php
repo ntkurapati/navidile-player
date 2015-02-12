@@ -49,7 +49,7 @@ if($statement){
         }
 
         echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
-        if($statement2 = $mysqli->query("UPDATE subscribers SET subscriptions=? WHERE password=?"))
+        if($statement2 = $mysqli->query("UPDATE subscribers SET `subscriptions`= ? WHERE `password` = ? "))
         {
             $statement2->bind_param('ss', $newsubs, $pw);
             $statement2->execute();
