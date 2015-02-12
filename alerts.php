@@ -18,9 +18,9 @@ $statement->execute();
 $statement->bind_result($email_addr, $subscriptions, $class_years);
 while($statement->fetch()){
 {
-    echo($email_addr)
-    echo($subscriptions)
-    echo($class_years)
+    echo($email_addr);
+    echo($subscriptions);
+    echo($class_years);
 }
 $statement->free_result();
 
