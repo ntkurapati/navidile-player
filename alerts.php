@@ -47,6 +47,7 @@ if($statement){
             }
             $newsubs .=  $subpiece . ',';
         }
+        $newsubs = trim($newsubs, ',');
 
         echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
         if($statement2 = $mysqli->prepare("UPDATE subscribers SET `subscriptions`= ? WHERE `password` = ? "))
