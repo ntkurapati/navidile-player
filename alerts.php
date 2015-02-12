@@ -39,7 +39,7 @@ if($statement){
                         $subpiece=str_replace($subpiece, $reqalert, '');
                     }
                 }
-                $newsubs .= $subpiece
+                $newsubs .= $subpiece;
             }
 
             echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
