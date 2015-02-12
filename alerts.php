@@ -12,16 +12,15 @@ if ($mysqli->connect_errno) {
 }
 $pw=$_GET['pw'];
 
-$statement = $mysqli->prepare("SELECT `email_addr`, `subscriptions`, `class_years`  FROM subscribers WHERE `password` = ?");
+$statement = $mysqli->prepare("SELECT `email_addr`, `subscriptions` FROM subscribers WHERE `password` = ?");
 if($statement){
     $statement->bind_param('s', $pw);
     $statement->execute();
-    $statement->bind_result($email_addr, $subscriptions, $class_years);
+    $statement->bind_result($email_addr, $subscriptions);
     while($statement->fetch())
     {
-        echo($email_addr);
-        echo($subscriptions);
-        echo($class_years);
+        echo("your subscriptions for ".$email_addr. " are: ". $subscriptions)
+
     }
     $statement->free_result();
 }
