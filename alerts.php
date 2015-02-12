@@ -19,44 +19,47 @@ if($statement){
     $statement->bind_result($email_addr, $subscriptions);
     while($statement->fetch())
     {
-        echo("your subscriptions for ".$email_addr. " are: ". $subscriptions . "<br>");
-        $alert = $_GET['alert'];
-        echo("your alert is " . $alert . "<br>");
-        if($alert) {
-            $newsubs='';
-            $subpieces = explode(',', $subscriptions);
-            $reqpieces = explode(':', $alert);
-            $reqcyear = $reqpieces[0];
-            $reqalert = substr($reqpieces[1], 1);
-            echo('::' . $reqalert ."::");
-            $reqaction = substr($reqpieces[1],0, 1);
-            foreach($subpieces as $subpiece) {
-                $pieces = explode(':', $subpiece);
-                $cyear = $pieces[0];
-                $alerts = substr($pieces[1], 1);
-                if($cyear == $reqcyear){
-                    if($reqaction == '-') {
-                        $subpiece=str_replace($reqalert, '', $subpiece );
-                    }
-                    if($reqaction == '+') {
-                        $subpiece .=$reqalert;
-                    }
-                }
-                $newsubs .= $subpiece;
-            }
 
-            echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
-            if($statement2 = $mysqli->query("UPDATE subscribers SET subscriptions=? WHERE password=?"))
-            {
-                $statement2->bind_param('ss', $newsubs, $pw);
-                $statement2->execute();
-                }
-            else {
-                print 'Error : ('. $mysqli->errno .') '. $mysqli->error;
-            }
-        }
     }
     $statement->free_result();
+    echo("your subscriptions for ".$email_addr. " are: ". $subscriptions . "<br>");
+    $alert = $_GET['alert'];
+    echo("your alert is " . $alert . "<br>");
+    if($alert) {
+        $newsubs='';
+        $subpieces = explode(',', $subscriptions);
+        $reqpieces = explode(':', $alert);
+        $reqcyear = $reqpieces[0];
+        $reqalert = substr($reqpieces[1], 1);
+        echo('::' . $reqalert ."::");
+        $reqaction = substr($reqpieces[1],0, 1);
+        foreach($subpieces as $subpiece) {
+            $pieces = explode(':', $subpiece);
+            $cyear = $pieces[0];
+            $alerts = substr($pieces[1], 1);
+            if($cyear == $reqcyear){
+                if($reqaction == '-') {
+                    $subpiece=str_replace($reqalert, '', $subpiece );
+                }
+                if($reqaction == '+') {
+                    $subpiece .=$reqalert;
+                }
+            }
+            $newsubs .= ','. $subpiece;
+        }
+
+        echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
+        if($statement2 = $mysqli->query("UPDATE subscribers SET subscriptions=? WHERE password=?"))
+        {
+            $statement2->bind_param('ss', $newsubs, $pw);
+            $statement2->execute();
+            }
+        else {
+            print 'Error : ('. $mysqli->errno .') '. $mysqli->error;
+        }
+    }
+
+
 
 
 
