@@ -16,7 +16,7 @@ $statement = $mysqli->prepare("SELECT `email_addr`, `subscriptions`, `class_year
 $statement->bind_param('s', $pw);
 $statement->execute();
 $statement->bind_result($email_addr, $subscriptions, $class_years);
-while($statement->fetch()){
+while($statement->fetch())
 {
     echo($email_addr);
     echo($subscriptions);
