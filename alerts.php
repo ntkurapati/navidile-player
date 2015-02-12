@@ -38,6 +38,9 @@ if($statement){
                     if($reqaction == '-') {
                         $subpiece=str_replace($reqalert, '', $subpiece );
                     }
+                    if($reqaction == '+') {
+                        $subpiece .=$reqalert;
+                    }
                 }
                 $newsubs .= $subpiece;
             }
