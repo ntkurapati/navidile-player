@@ -23,7 +23,7 @@ if($statement){
         $alert = $_GET['alert'];
         echo("your alert is " . $alert . "<br>");
         if($alert) {
-            $newsubs=''
+            $newsubs='';
             $subpieces = explode(',', $subscriptions);
             $reqpieces = explode(':', $alert);
             $reqcyear = $reqpieces[0];
