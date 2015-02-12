@@ -41,7 +41,7 @@ if($statement){
                 if($reqaction == '-') {
                     $subpiece=str_replace($reqalert, '', $subpiece );
                 }
-                if($reqaction == '+') {
+                if($reqaction == '@') {
                     $subpiece .=$reqalert;
                 }
             }
