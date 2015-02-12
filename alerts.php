@@ -54,6 +54,7 @@ if($statement){
         {
             $statement2->bind_param('ss', $newsubs, $pw);
             $statement2->execute();
+            print 'Success!!';
             }
         else {
             print 'Error : ('. $mysqli->errno .') '. $mysqli->error;
