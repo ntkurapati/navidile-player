@@ -19,8 +19,9 @@ if($statement){
     $statement->bind_result($email_addr, $subscriptions);
     while($statement->fetch())
     {
-        echo("your subscriptions for ".$email_addr. " are: ". $subscriptions);
+        echo("your subscriptions for ".$email_addr. " are: ". $subscriptions . "<br>");
         $alert = $_GET['alert'];
+        echo("your alert is " . $alert "<br>");
         if($alert) {
             $subpieces = explode(',', $subscriptions);
             $reqpieces = explode(':', $alert);
