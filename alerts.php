@@ -12,7 +12,7 @@ if ($mysqli->connect_errno) {
 }
 $pw=$_GET['id'];
 
-$statement = $mysqli->prepare("SELECT `email_addr`, `subscriptions`, `class_years`,  FROM recordings WHERE `password` = ?");
+$statement = $mysqli->prepare("SELECT `email_addr`, `subscriptions`, `class_years`,  FROM subscriptions WHERE `password` = ?");
 $statement->bind_param('s', $pw);
 $statement->execute();
 $statement->bind_result($email_addr, $subscriptions, $class_years);
