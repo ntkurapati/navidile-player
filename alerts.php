@@ -22,10 +22,26 @@ if($statement){
         echo("your subscriptions for ".$email_addr. " are: ". $subscriptions);
         $alert = $_GET['alert'];
         if($alert) {
-            $pieces = explode(',', $alert);
+            $subpieces = explode(',', $subscriptions);
+            $reqpieces = explode(':', $alert);
+            $reqcyear = $reqpieces[0];
+            $reqalert = substr($reqpieces[1], 1);
+            $reqaction = substr($regpieces[1],0, 1);
+            foreach($subpieces as $subpiece) {
+                $pieces = explode(':', $subpiece);
+                $cyear = $pieces[0];
+                $alerts = substr($pieces[1], 1);
+                if($cyear == $reqcyear){
+                    if($reqaction == '-') {
+                        $subpiece=str_replace($subpiece, $regalert, '');
+                    }
+                }
 
-            $cyear = $pieces[0];
-            $sub = $pieces[1];
+
+
+            }
+            $newsubs = implode(',', $subpieces);
+            echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs)
             $statement2 = $mysqli->prepare("UPDATE subscribers SET `subscriptions` = ? WHERE `password` = ?");
             $statement2->execute(array($newsubs, $pw));
         }
