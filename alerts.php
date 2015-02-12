@@ -36,7 +36,7 @@ if($statement){
                 $alerts = substr($pieces[1], 1);
                 if($cyear == $reqcyear){
                     if($reqaction == '-') {
-                        $subpiece=str_replace($reqalert, '', $subpiece, );
+                        $subpiece=str_replace($reqalert, '', $subpiece);
                     }
                 }
                 $newsubs .= $subpiece;
