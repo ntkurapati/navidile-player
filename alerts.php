@@ -23,6 +23,7 @@ if($statement){
         $alert = $_GET['alert'];
         echo("your alert is " . $alert . "<br>");
         if($alert) {
+            $newsubs=''
             $subpieces = explode(',', $subscriptions);
             $reqpieces = explode(':', $alert);
             $reqcyear = $reqpieces[0];
@@ -38,8 +39,9 @@ if($statement){
                         $subpiece=str_replace($subpiece, $reqalert, '');
                     }
                 }
+                $newsubs .= $subpiece
             }
-            $newsubs = implode(',', $subpieces);
+
             echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
             $statement2 = $mysqli->prepare("UPDATE subscribers SET `subscriptions` = ? WHERE `password` = ?");
             $statement2->execute(array($newsubs, $pw));
