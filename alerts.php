@@ -27,7 +27,7 @@ if($statement){
             $reqpieces = explode(':', $alert);
             $reqcyear = $reqpieces[0];
             $reqalert = substr($reqpieces[1], 1);
-            echo('::' .reqalert ."::");
+            echo('::' . $reqalert ."::");
             $reqaction = substr($reqpieces[1],0, 1);
             foreach($subpieces as $subpiece) {
                 $pieces = explode(':', $subpiece);
