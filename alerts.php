@@ -20,8 +20,24 @@ if($statement){
     while($statement->fetch())
     {
         echo("your subscriptions for ".$email_addr. " are: ". $subscriptions);
+        $alert = $_GET['alert'];
+        if($alert) {
+            $pieces = explode(',', $alert);
 
+            $cyear = $pieces[0];
+            $sub = $pieces[1];
+            $statement2 = $mysqli->prepare("UPDATE subscribers SET `subscriptions` = ? WHERE `password` = ?");
+            $statement2->execute(array($newsubs, $pw));
+        }
     }
     $statement->free_result();
+
+
+
 }
+else{
+echo("i didn't find you in the db");
+}
+
+
 ?>
