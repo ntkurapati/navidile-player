@@ -10,9 +10,9 @@ $mysqli = new mysqli($hostname, $username, $password, "pittmedstech_nav");
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-$pw=$_GET['id'];
+$pw=$_GET['pw'];
 
-$statement = $mysqli->prepare("SELECT `email_addr`, `subscriptions`, `class_years`,  FROM subscriptions WHERE `password` = ?");
+$statement = $mysqli->prepare("SELECT `email_addr`, `subscriptions`, `class_years`,  FROM subscribers WHERE `password` = ?");
 $statement->bind_param('s', $pw);
 $statement->execute();
 $statement->bind_result($email_addr, $subscriptions, $class_years);
