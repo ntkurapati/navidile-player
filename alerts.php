@@ -21,7 +21,7 @@ if($statement){
     {
         echo("your subscriptions for ".$email_addr. " are: ". $subscriptions . "<br>");
         $alert = $_GET['alert'];
-        echo("your alert is " . $alert "<br>");
+        echo("your alert is " . $alert . "<br>");
         if($alert) {
             $subpieces = explode(',', $subscriptions);
             $reqpieces = explode(':', $alert);
