@@ -25,7 +25,7 @@ if($statement){
     echo("your subscriptions for ".$email_addr. " are: ". $subscriptions . "<br>");
     $alert = $_GET['alert'];
     $action = $_GET['action'];
-    echo("your alert to" . $action . " is " . $alert . "<br>");
+    echo("Your alert to " . $action . " is " . $alert . "<br>");
     if($alert and $action ) {
         if($action == "unsubscribe"){
             $newsubs = str_replace( $alert, '', $subscriptions);
@@ -39,7 +39,9 @@ if($statement){
         {
             $statement2->bind_param('ss', $newsubs, $pw);
             $statement2->execute();
-            print 'Success!!';
+            print '<br>Success!!';
+
+
             }
         else {
             print 'Error : ('. $mysqli->errno .') '. $mysqli->error;
