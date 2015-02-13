@@ -30,7 +30,7 @@ if($statement){
         if($action == "unsubscribe"){
             $newsubs = str_replace( $alert, '', $subscriptions);
         }
-        else($action == 'subscribe') {
+        if ($action == 'subscribe') {
             $newsubs = $alert . ',' . $subscriptions;
         }
 
