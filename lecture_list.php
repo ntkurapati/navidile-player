@@ -12,14 +12,23 @@ if ($mysqli->connect_errno) {
 }
 $class_year=$_GET['class_year'];
 
-$statement = $mysqli->prepare("SELECT `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `cyear` = ?");
+
+
+
+$statement = $mysqli->prepare("SELECT `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `cyear` = ? ORDER BY `rec_date`");
 $statement->bind_param('s', $class_year);
 $statement->execute();
 $statement->bind_result($mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
 print '<table>';
-while($statement->fetch()){
-print "<tr><td>" .$rec_date . "</td><td><a href=" . $mediasite_url . ' rel=nofollow>' . $title . '</a></td><td>[navidile]</td><td>';
+while($statement->fetch_array()){
+    print "<tr>";
+    print "<td>$rec_date</td>";
+    print "<td><a href=\"$mediasite_url\" rel=\"nofollow\">$title</a></td>";
+    print "<td>[<a href=\"podcast_url" rel=\"nofollow\">mp3</a>]</td>";
+    print "<td>[<a href=\"index.php?lec_id=$lec_id\" rel=\"nofollow\">navidile</a>]</td>";
+    print "</tr>";
 }
+print "</table>";
 $statement->free_result();
 
 
@@ -28,19 +37,3 @@ $statement2 = $mysqli->prepare("SELECT `idno` FROM recordings WHERE `course_name
 $statement2->bind_param('s', $course_title);
 $statement2->execute();
 $statement2->bind_result($temp_idno);
-
-$last_id="";
-$next_id="";
-while($statement2->fetch()){
-	if($temp_idno == $lec_id) {
-		$prev_id=$last_id;
-}
-	if($lec_id == $last_id)
-	{
-		$next_id=$temp_idno;
-		break;
-	}
-	$last_id=$temp_idno;
-}
-$statement2->free_result();
-
