@@ -33,7 +33,7 @@ foreach( $results as $result) {
     print " [<a href=\"$mediasite_url\">[mediasite]</a>";
     print " [<a href=\"$podcast_url\">[podcast]</a>";
     print " [<a href=\"$navigator_url\">[navigator]</a>";
-    print "<hr />"
+    print "<hr />";
     $statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? AND `course_uid` = ? ORDER BY `rec_date` DESC");
     $statement->bind_param('ss', $class_year, $result['course_uid']);
     $statement->execute();
