@@ -17,14 +17,14 @@ $statement2->bind_param('s', $class_year);
 $statement2->execute();
 $statement2->bind_result($course_uid, $mediasite_url, $podcast_url, $navigator_url, $course_name);
 $results = array();
-$i=0
+$i=0;
 while ($statement2->fetch()) {
   $results[$i]['course_uid'] = $course_uid;
   $results[$i]['mediasite_url'] = $mediasite_url;
   $results[$i]['podcast_url'] = $podcast_url;
   $results[$i]['navigator_url'] = $navigator_url;
   $results[$i]['course_name'] = $course_name;
-  $i=i+1
+  $i=i+1;
 }
 $statement2->free_result();
 
