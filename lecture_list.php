@@ -12,20 +12,27 @@ if ($mysqli->connect_errno) {
 }
 $class_year=$_GET['class_year'];
 
-$statement2 = $mysqli->prepare("SELECT `unique_id` FROM courses WHERE `cyear` = ? ORDER BY `start_date` ");
+$statement2 = $mysqli->prepare("SELECT `unique_id`, `mediasite_url`, `podcast_url`, `navigator_url`, `name` FROM courses WHERE `cyear` = ? ORDER BY `start_date` ");
 $statement2->bind_param('s', $class_year);
 $statement2->execute();
-$statement2->bind_result($course_ids);
-$courses = $statement2->fetch_all();
+$statement2->bind_result($course_uid, $mediasite_url, $podcast_url, $navigator_url, $course_name);
+$results = array();
+while ($statement2->fetch()) {
+  $results[]['course_uid'] = $course_uid;
+  $results[]['mediasite_url'] = $mediasite_url;
+  $results[]['podcast_url'] = $podcast_url;
+  $results[]['navigator_url'] = $navigator_url;
+  $results[]['course_name'] = $course_name;
+}
 $statement2->free_result();
 
 
 
-foreach( $courses as $course) {
-    print $course;
+foreach( $results as $result) {
+    print $result['course_name'];
 
     $statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? AND `course_uid` = ? ORDER BY `rec_date` DESC");
-    $statement->bind_param('ss', $class_year, $course);
+    $statement->bind_param('ss', $class_year, $course_uid);
     $statement->execute();
     $statement->bind_result($lec_id, $mpurl, $course_title, $title, $rec_date, $mediasite_url);
     print '<table>';
