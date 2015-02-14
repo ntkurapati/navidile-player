@@ -29,10 +29,10 @@ $statement2->free_result();
 
 
 foreach( $results as $result) {
-    print $result['course_name'];
-    print " [<a href=\"$mediasite_url\">[mediasite]</a>";
-    print " [<a href=\"$podcast_url\">[podcast]</a>";
-    print " [<a href=\"$navigator_url\">[navigator]</a>";
+    print $results['course_name'];
+    print " [<a href=\"" . $results['mediasite_url'] .  "\">mediasite</a>]";
+    print " [<a href=\"" . $results['podcast_url'] . "\">podcast</a>]";
+    print " [<a href=\"" . $results['navigator_url'] . "\">navigator</a>]";
     print "<hr />";
     $statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? AND `course_uid` = ? ORDER BY `rec_date` DESC");
     $statement->bind_param('ss', $class_year, $result['course_uid']);
