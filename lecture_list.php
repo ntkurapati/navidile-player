@@ -24,8 +24,8 @@ $statement2->free_result();
 foreach( $courses as $course) {
     print $course;
 
-    $statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? ORDER BY `rec_date` DESC");
-    $statement->bind_param('s', $class_year);
+    $statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? AND `course_uid` = ? ORDER BY `rec_date` DESC");
+    $statement->bind_param('ss', $class_year, $course);
     $statement->execute();
     $statement->bind_result($lec_id, $mpurl, $course_title, $title, $rec_date, $mediasite_url);
     print '<table>';
