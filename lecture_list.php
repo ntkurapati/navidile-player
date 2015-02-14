@@ -15,7 +15,7 @@ $class_year=$_GET['class_year'];
 
 
 
-$statement = $mysqli->prepare("SELECT `idno` `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url` FROM recordings WHERE `cyear` = ? ORDER BY `rec_date`");
+$statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? ORDER BY `rec_date`");
 $statement->bind_param('s', $class_year);
 $statement->execute();
 $statement->bind_result($lec_id, $mpurl, $course_title, $title, $rec_date, $mediasite_url);
