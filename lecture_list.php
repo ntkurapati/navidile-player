@@ -18,7 +18,7 @@ $statement->execute();
 $statement->bind_result($mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
 print '<table>';
 while($statement->fetch()){
-print "<tr><td>" .$rec_date . "</td><td><a href=" . $mediasite_url . "rel="nofollow">" . $title . "</a></td><td>[navidile]</td><td>";
+print "<tr><td>" .$rec_date . "</td><td><a href=" . $mediasite_url . "rel='nofollow'>" . $title . "</a></td><td>[navidile]</td><td>";
 }
 $statement->free_result();
 
