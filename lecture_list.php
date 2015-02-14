@@ -12,13 +12,13 @@ if ($mysqli->connect_errno) {
 }
 $class_year=$_GET['class_year'];
 
-$statement = $mysqli->prepare("SELECT `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `idno` = ?");
-$statement->bind_param('s', $lec_id);
+$statement = $mysqli->prepare("SELECT `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `cyear` = ?");
+$statement->bind_param('s', $class_year);
 $statement->execute();
 $statement->bind_result($mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
 print '<table>';
 while($statement->fetch()){
-print "<tr><td>" .$rec_date . "</td><td><a href=" . $mediasite_url . "rel=nofollow>" . $title . "</a></td><td>[navidile]</td><td>";
+print "<tr><td>" .$rec_date . "</td><td><a href=" . $mediasite_url . ' rel=nofollow>' . $title . '</a></td><td>[navidile]</td><td>';
 }
 $statement->free_result();
 
