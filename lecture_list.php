@@ -15,10 +15,10 @@ $class_year=$_GET['class_year'];
 
 
 
-$statement = $mysqli->prepare("SELECT `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `cyear` = ? ORDER BY `rec_date`");
+$statement = $mysqli->prepare("SELECT `idno` `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `cyear` = ? ORDER BY `rec_date`");
 $statement->bind_param('s', $class_year);
 $statement->execute();
-$statement->bind_result($mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
+$statement->bind_result($lec_id, $mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
 print '<table>';
 while($statement->fetch()) {
     print "<tr>";
