@@ -26,7 +26,7 @@ while($statement->fetch()) {
     print "<td><a href=\"$mediasite_url\" rel=\"nofollow\">$title</a></td>";
     print "<td>[<a href=\"podcast_url\" "  . 'rel=\"nofollow\">'  ."mp3</a>]</td>";
     print "<td>[<a href=\"index.php?lec_id=$lec_id\" "  . 'rel=\"nofollow\">'  ."navidile</a>]</td>";
-    print "</tr>"
+    print "</tr>";
 }
 print "</table>";
 $statement->free_result();
