@@ -24,7 +24,7 @@ while ($statement2->fetch()) {
   $results[$i]['podcast_url'] = $podcast_url;
   $results[$i]['navigator_url'] = $navigator_url;
   $results[$i]['course_name'] = $course_name;
-  $i=i+1;
+  $i=$i+1;
 }
 $statement2->free_result();
 
