@@ -13,7 +13,7 @@ if ($mysqli->connect_errno) {
 $class_year=$_GET['class_year'];
 
 $statement2 = $mysqli->prepare("SELECT `course_uuid` FROM courses WHERE `cyear` = ? ORDER BY `start_date` ");
-$statement2->bind_param('s', $course_title);
+$statement2->bind_param('s', $class_year);
 $statement2->execute();
 $statement2->bind_result($course_ids);
 $courses = $statement2->fetch_all();
