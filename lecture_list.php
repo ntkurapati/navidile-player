@@ -17,22 +17,24 @@ $statement2->bind_param('s', $class_year);
 $statement2->execute();
 $statement2->bind_result($course_uid, $mediasite_url, $podcast_url, $navigator_url, $course_name);
 $results = array();
+$i=0
 while ($statement2->fetch()) {
-  $results[]['course_uid'] = $course_uid;
-  $results[]['mediasite_url'] = $mediasite_url;
-  $results[]['podcast_url'] = $podcast_url;
-  $results[]['navigator_url'] = $navigator_url;
-  $results[]['course_name'] = $course_name;
+  $results[$i]['course_uid'] = $course_uid;
+  $results[$i]['mediasite_url'] = $mediasite_url;
+  $results[$i]['podcast_url'] = $podcast_url;
+  $results[$i]['navigator_url'] = $navigator_url;
+  $results[$i]['course_name'] = $course_name;
+  $i=i+1
 }
 $statement2->free_result();
 
 
 
 foreach( $results as $result) {
-    print $results['course_name'];
-    print " [<a href=\"" . $results['mediasite_url'] .  "\">mediasite</a>]";
-    print " [<a href=\"" . $results['podcast_url'] . "\">podcast</a>]";
-    print " [<a href=\"" . $results['navigator_url'] . "\">navigator</a>]";
+    print $result['course_name'];
+    print " [<a href=\"" . $result['mediasite_url'] .  "\">mediasite</a>]";
+    print " [<a href=\"" . $result['podcast_url'] . "\">podcast</a>]";
+    print " [<a href=\"" . $result['navigator_url'] . "\">navigator</a>]";
     print "<hr />";
     $statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? AND `course_uid` = ? ORDER BY `rec_date` DESC");
     $statement->bind_param('ss', $class_year, $result['course_uid']);
