@@ -22,7 +22,7 @@ $statement2->free_result();
 
 
 foreach( $courses as $course) {
-    print $course
+    print $course;
 
     $statement = $mysqli->prepare("SELECT `idno`, `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`  FROM recordings WHERE `cyear` = ? ORDER BY `rec_date` DESC");
     $statement->bind_param('s', $class_year);
