@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
   <title><?php echo "Navidile" .  $_GET['class_year']; ?></title>
-
+  <link href="http://students.medschool.pitt.edu/navidile/navidile_player/style.css" rel="stylesheet" type="text/css">
+</head>
 <?php
 ini_set('display_errors',1);
 error_reporting(E_ALL);
