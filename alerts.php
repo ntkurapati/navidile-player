@@ -24,48 +24,36 @@ if($statement){
     $statement->free_result();
     echo("your subscriptions for ".$email_addr. " are: ". $subscriptions . "<br>");
     $alert = $_GET['alert'];
-    echo("your alert is " . $alert . "<br>");
-    if($alert) {
-        $newsubs='';
-        $subpieces = explode(',', $subscriptions);
-        $reqpieces = explode(':', $alert);
-        $reqcyear = $reqpieces[0];
-        $reqalert = substr($reqpieces[1], 1);
-        echo('::' . $reqalert ."::");
-        $reqaction = substr($reqpieces[1],0, 1);
-        foreach($subpieces as $subpiece) {
-            $pieces = explode(':', $subpiece);
-            $cyear = $pieces[0];
-            $alerts = substr($pieces[1], 1);
-            if($cyear == $reqcyear){
-                if($reqaction == '-') {
-                    $subpiece=str_replace($reqalert, '', $subpiece );
-                }
-                if($reqaction == '@') {
-                    $subpiece .=$reqalert;
-                }
-            }
-            $newsubs .=  $subpiece . ',';
+    $action = $_GET['action'];
+    echo("Your alert to " . $action . " is " . $alert . "<br>");
+    if($alert and $action ) {
+        if($action == "unsubscribe"){
+            $newsubs = str_replace( $alert, '', $subscriptions);
         }
-        $newsubs = trim($newsubs, ',');
+        if ($action == 'subscribe') {
+            $newsubs = $alert . ',' . $subscriptions;
+        }
 
         echo('<br>subscription change: ' . $subscriptions . '-->' . $newsubs);
         if($statement2 = $mysqli->prepare("UPDATE subscribers SET `subscriptions`= ? WHERE `password` = ? "))
         {
             $statement2->bind_param('ss', $newsubs, $pw);
             $statement2->execute();
-            print 'Success!!';
+            print '<br>Success!!';
+
+
             }
         else {
             print 'Error : ('. $mysqli->errno .') '. $mysqli->error;
         }
     }
-
-
-
-
-
 }
+
+
+
+
+
+
 else{
 echo("i didn't find you in the db");
 }
