@@ -24,16 +24,9 @@ while($statement->fetch()) {
     print "<tr>";
     print "<td>$rec_date</td>";
     print "<td><a href=\"$mediasite_url\" rel=\"nofollow\">$title</a></td>";
-    print "<td>[<a href=\"$podcast_url\" "  . 'rel="nofollow">'  ."mp3</a>]</td>";
+    print "<td>[<a href=\"$mpurl\" "  . 'rel="nofollow">'  ."mp3</a>]</td>";
     print '<td>[<a href="index.php?lec_id=' . $lec_id . '" rel="nofollow">'  ."navidile</a>]</td>";
     print "</tr>";
 }
 print "</table>";
 $statement->free_result();
-
-
-$previous_id="";
-$statement2 = $mysqli->prepare("SELECT `idno` FROM recordings WHERE `course_name` = ? ORDER BY `rec_date` ");
-$statement2->bind_param('s', $course_title);
-$statement2->execute();
-$statement2->bind_result($temp_idno);
