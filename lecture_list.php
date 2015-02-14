@@ -15,17 +15,17 @@ $class_year=$_GET['class_year'];
 
 
 
-$statement = $mysqli->prepare("SELECT `idno` `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url`,  `slide_base_url`, `image_refs`, `cyear` FROM recordings WHERE `cyear` = ? ORDER BY `rec_date`");
+$statement = $mysqli->prepare("SELECT `idno` `podcast_url`, `course_name`, `name`, `rec_date`, `mediasite_url` FROM recordings WHERE `cyear` = ? ORDER BY `rec_date`");
 $statement->bind_param('s', $class_year);
 $statement->execute();
-$statement->bind_result($lec_id, $mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
+$statement->bind_result($lec_id, $mpurl, $course_title, $title, $rec_date, $mediasite_url);
 print '<table>';
 while($statement->fetch()) {
     print "<tr>";
     print "<td>$rec_date</td>";
     print "<td><a href=\"$mediasite_url\" rel=\"nofollow\">$title</a></td>";
-    print "<td>[<a href=\"podcast_url\" "  . 'rel=\"nofollow\">'  ."mp3</a>]</td>";
-    print '<td>[<a href=\"index.php?lec_id=\"' . $lec_id . '\" rel=\"nofollow\">'  ."navidile</a>]</td>";
+    print "<td>[<a href=\"$podcast_url\" "  . 'rel="nofollow">'  ."mp3</a>]</td>";
+    print '<td>[<a href="index.php?lec_id=' . $lec_id . '" rel="nofollow">'  ."navidile</a>]</td>";
     print "</tr>";
 }
 print "</table>";
