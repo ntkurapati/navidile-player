@@ -20,7 +20,7 @@ $statement->bind_param('s', $class_year);
 $statement->execute();
 $statement->bind_result($mpurl, $course_title, $title, $rec_date, $mediasite_url, $slide_base_url, $image_refs, $class_year);
 print '<table>';
-while($statement->fetch()){
+while($statement->fetch()) {
     print "<tr>";
     print "<td>$rec_date</td>";
     print "<td><a href=\"$mediasite_url\" rel=\"nofollow\">$title</a></td>";
