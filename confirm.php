@@ -14,5 +14,14 @@ $email=$_POST['email_addr'];
 $alerts=$_POST['alerts'];
 echo($email.' '.$alerts)
 
+$statement = $mysqli->prepare("INSERT INTO subscriptions ");
+if($statement){
+    $statement->bind_param('s', $pw);
+    $statement->execute();
+    $statement->bind_result($email_addr, $subscriptions);
+INSERT INTO <table> (field1, field2, field3, ...)
+VALUES ('value1', 'value2','value3', ...)
+ON DUPLICATE KEY UPDATE
+field1='value1', field2='value2', field3='value3', ...
 
 ?>
