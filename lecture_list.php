@@ -32,7 +32,7 @@ $statement2->free_result();
 
 foreach( $results as $result) {
     print "<hr />";
-    print $result['course_name'];
+    print "<h1>$result['course_name']</h1><br/>";
     print " [<a href=\"" . $result['mediasite_url'] .  "\">mediasite</a>]";
     print " [<a href=\"" . $result['podcast_url'] . "\">podcast</a>]";
     print " [<a href=\"" . $result['navigator_url'] . "\">navigator</a>]";
