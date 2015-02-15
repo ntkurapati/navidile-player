@@ -33,9 +33,9 @@
 					  <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Class Navidile Links <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="http://students.medschool.pitt.edu/navidile/2018-all-lr.html">2018</a></li>
-                          <li><a href="http://students.medschool.pitt.edu/navidile/2017-all-lr.html">2017</a></li>
-                          <li><a href="http://students.medschool.pitt.edu/navidile/2016-all-lr.html">2016</a></li>
+                          <li><a href="http://students.medschool.pitt.edu/navidile/navidile_player/lecture_list.php?class_year=2018">2018</a></li>
+                          <li><a href="http://students.medschool.pitt.edu/navidile/navidile_player/lecture_list.php?class_year=2017">2017</a></li>
+                          <li><a href="http://students.medschool.pitt.edu/navidile/navidile_player/lecture_list.php?class_year=2016">2016</a></li>
                         </ul>
                       </li>
                     </ul>
