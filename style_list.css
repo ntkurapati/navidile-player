@@ -14,10 +14,11 @@ html {
 	padding: 0;
 	}
 body { 
-	font: 75% georgia, sans-serif;
-	line-height: 1.88889;
-	color: #555753; 
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	line-height:  1.42857;
+	color: #ffffff; 
 	background: #fff url(blossoms.jpg) no-repeat bottom right; 
+	background-color: #182342;;
 	margin: 0; 
 	padding: 0;
 	}
@@ -26,7 +27,8 @@ p {
 	text-align: justify;
 	}
 h3 { 
-	font: italic normal 1.4em georgia, sans-serif;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 400;
 	letter-spacing: 1px; 
 	margin-bottom: 0; 
 	color: #7D775C;
@@ -34,7 +36,7 @@ h3 {
 a:link { 
 	font-weight: bold; 
 	text-decoration: none; 
-	color: #B7A5DF;
+	color: #FFFFFF;
 	}
 a:visited { 
 	font-weight: bold; 
@@ -48,7 +50,37 @@ a:hover, a:focus, a:active {
 abbr {
 	border-bottom: none;
 	}
-
+	.nav {
+padding-left: 0;
+margin-bottom: 0;
+list-style: none;
+/* list-style-type: amharic; */
+size: legal;
+line-height: 0;
+}
+.table {
+width: 100%;
+max-width: 100%;
+margin-bottom: 20px;
+margin-right: 100px;
+padding-right: 100px;
+font-size: 14px;
+border-top: 1px solid #0B0800;
+}
+.table>tbody>tr>td {
+border-top: 1px solid #0B0800;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.btn-primary {
+color: #ffffff;
+background-color: #595959;
+border-color: #595959
+}
 
 /* specific divs */
 .page-wrapper { 
