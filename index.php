@@ -1,4 +1,3 @@
-
 <?php
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
@@ -58,53 +57,8 @@ if ($next_id=="")
 ?>
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-   <script src="./js/bootstrap.min.js"></script>
-  <title>Navidile Player</title>
-  <link href="./style_list.css" rel="stylesheet" type="text/css">
-       <div class="bs-component">
-              <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container-fluid">
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="http://www.omed.pitt.edu/current-students/">Pitt Med</a>
-                  </div>
-
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                      <li><a href="https://navigator.medschool.pitt.edu">Navigator <span class="sr-only">(current)</span></a></li>
-                      <li><a href="http://zone.medschool.pitt.edu/Pages/default.aspx">Zone</a></li>
-                      <li><a href="https://my.pitt.edu">My Pitt</a></li>
-					  <li><a href="https://outlook.office365.com/owa/?realm=pitt.edu#path=/mail">Email</a></li>
-					  <li><a href="http://students.medschool.pitt.edu/wiki/index.php/Main_Page">Pitt Med Wiki</a></li>
-					  <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Class Navidile Links <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="http://students.medschool.pitt.edu/navidile/navidile_player/lecture_list.php?class_year=2018">2018</a></li>
-                          <li><a href="http://students.medschool.pitt.edu/navidile/navidile_player/lecture_list.php?class_year=2017">2017</a></li>
-                          <li><a href="http://students.medschool.pitt.edu/navidile/navidile_player/lecture_list.php?class_year=2016">2016</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                      <li><a href="http://www.omed.pitt.edu/current-students/">Pitt Med</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
-            <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
-
+  <title><?php echo $title; ?></title>
+  <script src="http://students.medschool.pitt.edu/navidile/navidile_player/shortcut.js" type="text/javascript"></script>
   <script type="text/javascript">
   var slidebaseurl="<?php echo $slide_base_url; ?>"
 var mp3src="<?php echo $mpurl; ?>"
@@ -250,12 +204,10 @@ function update_properties() {
 		
 	}
 }
+  </script>
+  <link href="http://students.medschool.pitt.edu/navidile/navidile_player/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="container">
-<div class="row">
-<div class="col-lg-12">
-
   <center>
   <h1><?php echo $course_title; ?> (Navidile v. 0.93b)</h1>
   <h2><?php echo $title; ?></h2>
